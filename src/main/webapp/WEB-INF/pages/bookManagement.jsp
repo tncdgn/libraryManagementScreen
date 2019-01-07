@@ -62,7 +62,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">{{!ctrl.book.id ? 'Add a Book' : 'Update a Book'}}</h4>
+					<h4 class="modal-title">{{!ctrl.book.id ? 'Update a Book' : 'Add a Book'}}</h4>
 				</div>
 
 

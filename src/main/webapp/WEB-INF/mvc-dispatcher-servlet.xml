@@ -19,11 +19,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     <mongo:mongo id="mongo"
-                 host="ds061298.mongolab.com"
-                 port="61298" />
-    <mongo:db-factory username="tncdgn"
-                      password="7557215"
-                      dbname="books"
+                 host="ds151354.mlab.com"
+                 port="51354" />
+    <mongo:db-factory username="mongodb"
+                      password="7557215mongodb"
+                      dbname="heroku_f9p42x4b"
                       mongo-ref="mongo"/>
 
     <!-- MongoTemplate for connecting and quering the documents in the database -->
