@@ -1,15 +1,40 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
     <context:component-scan base-package="com.springapp.mvc"/>
+    <context:annotation-config/>
+
+    <mvc:annotation-driven />
+
+    <mvc:resources mapping="/assets/**" location="/assets/" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <mongo:mongo id="mongo"
+                 host="ds061298.mongolab.com"
+                 port="61298" />
+    <mongo:db-factory username="tncdgn"
+                      password="7557215"
+                      dbname="books"
+                      mongo-ref="mongo"/>
 
+    <!-- MongoTemplate for connecting and quering the documents in the database -->
+    <bean id="customermongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+
+
+    </bean>
+    <context:property-placeholder location="assets/system.properties" />
+    <!--<bean id="repository" class="com.springapp.mvc.repository.BookRepository"/>
+    <bean id="service" class="com.springapp.mvc.service.BookService"/>
+
+    <bean id="captchaService" class="com.springapp.mvc.service.CaptchaService"/>-->
 </beans>
