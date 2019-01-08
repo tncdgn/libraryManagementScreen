@@ -18,12 +18,12 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <mongo:mongo id="mongo"
-                 host="ds151354.mlab.com"
-                 port="51354" />
-    <mongo:db-factory username="mongodb"
-                      password="7557215mongodb"
-                      dbname="heroku_f9p42x4b"
+      <mongo:mongo id="mongo"
+                 host="${db.host}"
+                 port="${db.port}" />
+    <mongo:db-factory username="${db.userName}"
+                      password="${db.passWord}"
+                      dbname="${db.name}"
                       mongo-ref="mongo"/>
 
     <!-- MongoTemplate for connecting and quering the documents in the database -->
